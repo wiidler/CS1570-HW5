@@ -10,7 +10,7 @@ using namespace std;
 /***********************STRUCT DEFINITIONS***********************/
 struct neighbor{
     int m_neighborId;
-    int m_acres;
+    float m_acres;
     int m_garages;
     int m_garagesBuilt;
     int m_stolenAcres;
