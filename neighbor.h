@@ -12,6 +12,8 @@ struct neighbor{
     int m_neighborId;
     int m_acres;
     int m_garages;
+    int m_garagesBuilt;
+    int m_stolenAcres;
     bool m_good;
     bool m_active;
 };

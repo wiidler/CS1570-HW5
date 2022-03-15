@@ -14,7 +14,7 @@ using namespace std;
 int main(){
     const int SIZE = 6;
     int i = 0;
-    srand(11);
+    srand(327);
     newHomeowner player;
     cout << "Congratulations on finding your home sweet home!" << endl << endl;
     cout << "May I get your name please? ";
@@ -23,9 +23,18 @@ int main(){
     cin.ignore(); // clean out the input stream buffer
     getline(cin, player.m_address); 
     cout << endl << "Time for a fresh start, eh? What's the total number of acres of your property? ";
+    player.m_garages = -1;
     cin >> player.m_acres;
+    while (player.m_acres < 0){
+        cout << endl << "Please enter a positive number!" << endl;
+        cin >> player.m_acres;
+    }
     cout << endl << "I'll wait for that housewarming party invite. How many garages does the house have? "; 
     cin >> player.m_garages;
+    while (player.m_garages <0){
+        cout << endl << "Please enter a positive number!" << endl;
+        cin >> player.m_garages;
+    }
     neighbor neighborhood[SIZE];
     initializeNeighbor(neighborhood, SIZE);
     int goodNeighbors = 0;
@@ -33,6 +42,8 @@ int main(){
     int activeBadNeighbors = 0;
     int changeAcres = 0;
     int changeGarages = 0;
+    int initialAcres = player.m_acres;
+    int initialGarages = player.m_garages;
     for(i = 0; i<SIZE; i++){
         if (neighborhood[i].m_good){
             goodNeighbors++;
@@ -47,22 +58,74 @@ int main(){
     cout << endl << "Sweet cookies! The neighborhood is lucky to have you, " << player.m_homeownerName << "! Looks like you have " << goodNeighbors << " good neighbors and " << badNeighbors << " bad neighbors, and they can't wait to show you around." << endl << endl;
     int rounds = 1;
     while((rounds <= 10) && (player.m_acres > 0) && (activeBadNeighbors != 0)){
+        cout << "ROUND " << rounds << endl;
+        changeGarages = 0;
+        changeAcres = 0;
+        int tempValueGarages = player.m_garages;
+        int tempValueAcres = player.m_acres;
         for(i=0; i<SIZE; i++){
-            if (neighborhood[i].m_active == true){
+            if(player.m_acres <= 0){
+                player.m_acres = 0;
+            }
+            else if (neighborhood[i].m_active == true){
                 if (neighborhood[i].m_good == true){
-                    changeGarages = player.m_garages;
                     requestAssistance(player, neighborhood[i]);
-                    changeGarages = player.m_garages - changeGarages;
                 }
                 else if (neighborhood[i].m_good == false){
                     defendHomeland(player, neighborhood[i]);
                 }
+                cout << endl;
             }
         }
+        changeGarages = player.m_garages - tempValueGarages;
+        changeAcres = player.m_acres - tempValueAcres;
         cout << "END-OF-ROUND SUMMARY:" << endl;
-        cout << "     Current acres of land: " << player.m_acres << "   Change: " << changeAcres << endl;
-        cout << "     Current number of garages: " << player.m_garages << "   Change: " << changeGarages << endl;
+        if (changeAcres >= 0){
+            cout << "     Current acres of land: " << player.m_acres << "   Change: +" << changeAcres << endl;
+        }
+        else{
+            cout << "     Current acres of land: " << player.m_acres << "   Change: " << changeAcres << endl;
+        }
+        if (changeGarages >= 0){
+            cout << "     Current number of garages: " << player.m_garages << "   Change: +" << changeGarages << endl;
+        }
+        else{
+            cout << "     Current number of garages: " << player.m_garages << "   Change: " << changeGarages << endl;
+        }
         rounds++;
+        cout << endl;
     }
+    cout << endl;
+    cout << "HOME DEFENDER " << player.m_homeownerName << "! Let's run through your battle summary!" << endl;
+    cout << "Home Defender:    " << player.m_homeownerName << endl;
+    cout << "Home Address:     " << player.m_address << endl;
+    cout << "Initial Acres of Land Owned:    " << initialAcres << endl;
+    cout << "Final Acres of Land Owned:      " << player.m_acres << endl;
+    cout << "Initial Number of Garages Owned:    " << initialGarages << endl;
+    cout << "Final Number of Garages Owned:      " << player.m_garages << endl;
+    cout << endl;
+    for(i=0; i<SIZE; i++){
+        cout << "Neighbor ID #: " << neighborhood[i].m_neighborId << endl;
+        cout << "Acres of Land Owned:    " << neighborhood[i].m_acres << endl;
+        cout << "Acres of Land Stolen:    " << neighborhood[i].m_stolenAcres << endl;
+        cout << "Initial number of Garages Owned:    " << (neighborhood[i].m_garages - neighborhood[i].m_garagesBuilt) << endl;
+        cout << "Final Number of Garages Owned:      " << neighborhood[i].m_garages << endl;
+        cout << "Likeable?    ";
+        if (neighborhood[i].m_good){
+            cout << "GOOD!" << endl;
+        }
+        else{
+            cout << "BAD!" << endl;
+        }
+        cout << "Status:      ";
+        if (neighborhood[i].m_active){
+            cout << "Active" << endl;
+        }
+        else{
+            cout << "Inactive" << endl;
+        }
+        cout << endl;
+    }
+    cout << "Goodbye " << player.m_homeownerName << "! The next time you buy a house, make sure that there's no bad neighbors around it." << endl;
     return 0;
 }

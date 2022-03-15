@@ -15,10 +15,10 @@ void initializeNeighbor(neighbor array[], int SIZE);
 // Definition:
 // Pre:
 // Post:
-void requestAssistance(newHomeowner theNewHomeowner, neighbor aGoodNeighbor);
+void requestAssistance(newHomeowner & theNewHomeowner, neighbor & aGoodNeighbor);
 // Definition:
 // Pre:
 // Post:
-void defendHomeland(newHomeowner theNewHomeowner, neighbor aBadNeighbor);
+void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor);
 
 #endif
