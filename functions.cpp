@@ -2,7 +2,6 @@
 #include "newhomeowner.h"
 #include "neighbor.h"
 #include <iostream>
-#include <cmath>
 
 using namespace std;
 
@@ -12,7 +11,7 @@ void initializeNeighbor(neighbor array[], int SIZE){
     for(i = 0; i < SIZE; i++){
         int ID = i;
         float acres = ((rand()%(32))+19);
-        int garages = fmod((acres/10), 10);
+        int garages = (acres/10);
         int garagesBuilt = 0;
         int stolenAcres = 0;
         bool good = (((rand() % 10) + 1) <= 5)? true : false;
