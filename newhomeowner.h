@@ -9,10 +9,10 @@ using namespace std;
 
 /***********************STRUCT DEFINITIONS***********************/
 struct newHomeowner {
-    string homeownerName;
-    string address;
-    float acres;
-    int garages;
+    string m_homeownerName;
+    string m_address;
+    float m_acres;
+    int m_garages;
 };
 
 /***********************FUNCTION PROTOTYPES***********************/

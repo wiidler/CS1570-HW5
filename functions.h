@@ -11,7 +11,7 @@ using namespace std;
 // Definition:
 // Pre:
 // Post:
-void initializeNeighbor();
+void initializeNeighbor(neighbor array[], int SIZE);
 // Definition:
 // Pre:
 // Post:
