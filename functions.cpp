@@ -14,7 +14,7 @@ void initializeNeighbor(neighbor array[], int SIZE){
         int garages = (acres/10) % 10;
         int garagesBuilt = 0;
         int stolenAcres = 0;
-        bool good = (((rand() % 8) + 2) <= 4)? true : false;
+        bool good = (((rand() % 10) + 1) <= 5)? true : false;
         bool active = true;
         neighbor neighbors = {ID, acres, garages, garagesBuilt, stolenAcres, good, active};
         array[i] = neighbors;
@@ -75,7 +75,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
             cout << "The bad neighbor has no idea what's going on, so you are safe, run! " << endl;
         }
     }
-    else if (theNewHomeowner.m_garages > aBadNeighbor.m_garages){
+    else if (theNewHomeowner.m_garages = aBadNeighbor.m_garages){
         cout << "You are safe, run!" << endl;
     }
     else if (theNewHomeowner.m_garages > aBadNeighbor.m_garages){
