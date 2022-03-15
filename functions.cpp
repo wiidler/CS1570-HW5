@@ -75,7 +75,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
             cout << "The bad neighbor has no idea what's going on, so you are safe, run! " << endl;
         }
     }
-    else if (theNewHomeowner.m_garages = aBadNeighbor.m_garages){
+    else if (theNewHomeowner.m_garages == aBadNeighbor.m_garages){
         cout << "You are safe, run!" << endl;
     }
     else if (theNewHomeowner.m_garages > aBadNeighbor.m_garages){
