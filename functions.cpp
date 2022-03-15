@@ -115,7 +115,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
                 }
             }
         }
-        else{
+        else if (aBadNeighbor.m_stolenAcres == 0){
             cout << "You are safe, run!" << endl;
         }
     }
