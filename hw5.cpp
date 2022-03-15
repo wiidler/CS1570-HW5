@@ -14,7 +14,7 @@ using namespace std;
 int main(){
     const int SIZE = 6;
     int i = 0;
-    srand(327);
+    srand(11);
     newHomeowner player;
     cout << "Congratulations on finding your home sweet home!" << endl << endl;
     cout << "May I get your name please? ";
@@ -30,16 +30,39 @@ int main(){
     initializeNeighbor(neighborhood, SIZE);
     int goodNeighbors = 0;
     int badNeighbors = 0;
+    int activeBadNeighbors = 0;
+    int changeAcres = 0;
+    int changeGarages = 0;
     for(i = 0; i<SIZE; i++){
         if (neighborhood[i].m_good){
             goodNeighbors++;
         }
         else if (!neighborhood[i].m_good){
             badNeighbors++;
+            if (neighborhood[i].m_active){
+                activeBadNeighbors++;
+            }
         }
     }
     cout << endl << "Sweet cookies! The neighborhood is lucky to have you, " << player.m_homeownerName << "! Looks like you have " << goodNeighbors << " good neighbors and " << badNeighbors << " bad neighbors, and they can't wait to show you around." << endl << endl;
     int rounds = 1;
-    // start while loop with rounds here until round 10 or if or if the player has no more acres of land or if the bad neighbors are inactive
+    while((rounds <= 10) && (player.m_acres > 0) && (activeBadNeighbors != 0)){
+        for(i=0; i<SIZE; i++){
+            if (neighborhood[i].m_active == true){
+                if (neighborhood[i].m_good == true){
+                    changeGarages = player.m_garages;
+                    requestAssistance(player, neighborhood[i]);
+                    changeGarages = player.m_garages - changeGarages;
+                }
+                else if (neighborhood[i].m_good == false){
+                    defendHomeland(player, neighborhood[i]);
+                }
+            }
+        }
+        cout << "END-OF-ROUND SUMMARY:" << endl;
+        cout << "     Current acres of land: " << player.m_acres << "   Change: " << changeAcres << endl;
+        cout << "     Current number of garages: " << player.m_garages << "   Change: " << changeGarages << endl;
+        rounds++;
+    }
     return 0;
 }
