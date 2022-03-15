@@ -79,42 +79,47 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
         cout << "You are safe, run!" << endl;
     }
     else if (theNewHomeowner.m_garages > aBadNeighbor.m_garages){
-        int chance = ((rand()%(80))+1);
-        if (!(chance%2)){
-            chance = ((rand()%(100))+1);
-            if(chance <= 73){
-                cout << "You are in luck! You got back half of the stolen land from this bad neighbor." << endl;
-                int returnedAcres = (aBadNeighbor.m_stolenAcres / 2);
-                theNewHomeowner.m_acres += returnedAcres;
-                aBadNeighbor.m_stolenAcres -= returnedAcres;
-                if (returnedAcres == 1){
-                    cout << returnedAcres << " acre of land reclaimed!" << endl;
+        if(aBadNeighbor.m_stolenAcres != 0){
+            int chance = ((rand()%(80))+1);
+            if (!(chance%2)){
+                chance = ((rand()%(100))+1);
+                if(chance <= 73){
+                    cout << "You are in luck! You got back half of the stolen land from this bad neighbor." << endl;
+                    int returnedAcres = (aBadNeighbor.m_stolenAcres / 2);
+                    theNewHomeowner.m_acres += returnedAcres;
+                    aBadNeighbor.m_stolenAcres -= returnedAcres;
+                    if (returnedAcres == 1){
+                        cout << returnedAcres << " acre of land reclaimed!" << endl;
+                    }
+                    else{
+                        cout << returnedAcres << " acres of land reclaimed!" << endl;
+                    }
+                    if (aBadNeighbor.m_stolenAcres == 0){
+                        cout << "Amazing work! This bad neighbor is now inactive." << endl;
+                        aBadNeighbor.m_active = false;
+                    }
                 }
-                else{
-                    cout << returnedAcres << " acres of land reclaimed!" << endl;
-                }
-                if (aBadNeighbor.m_stolenAcres == 0){
-                    cout << "Amazing work! This bad neighbor is now inactive." << endl;
-                    aBadNeighbor.m_active = false;
+                else {
+                    cout << "You are super lucky! You got back ALL of the stolen land from this bad neighbor." << endl;
+                    int returnedAcres = aBadNeighbor.m_stolenAcres;
+                    theNewHomeowner.m_acres += returnedAcres;
+                    aBadNeighbor.m_stolenAcres = 0;
+                    aBadNeighbor.m_active = 0;
+                    if (returnedAcres == 1){
+                        cout << returnedAcres << " acre of land reclaimed!" << endl;
+                    }
+                    else{
+                        cout << returnedAcres << " acres of land reclaimed!" << endl;
+                    }
+                    if (aBadNeighbor.m_stolenAcres == 0){
+                        cout << "Amazing work! This bad neighbor is now inactive." << endl;
+                        aBadNeighbor.m_active = false;
+                    }
                 }
             }
-            else {
-                cout << "You are super lucky! You got back ALL of the stolen land from this bad neighbor." << endl;
-                int returnedAcres = aBadNeighbor.m_stolenAcres;
-                theNewHomeowner.m_acres += returnedAcres;
-                aBadNeighbor.m_stolenAcres = 0;
-                aBadNeighbor.m_active = 0;
-                if (returnedAcres == 1){
-                    cout << returnedAcres << " acre of land reclaimed!" << endl;
-                }
-                else{
-                    cout << returnedAcres << " acres of land reclaimed!" << endl;
-                }
-                if (aBadNeighbor.m_stolenAcres == 0){
-                    cout << "Amazing work! This bad neighbor is now inactive." << endl;
-                    aBadNeighbor.m_active = false;
-                }
-            }
+        }
+        else{
+            cout << "You are safe, run!" << endl;
         }
     }
     return;
