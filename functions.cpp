@@ -78,7 +78,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
     else if (theNewHomeowner.m_garages >= aBadNeighbor.m_garages){
         if(aBadNeighbor.m_stolenAcres != 0){
             int chance = ((rand()%(80))+1);
-            if (!(chance%2)){
+            if ((chance % 2) == 0){
                 chance = ((rand()%(100))+1);
                 if(chance <= 73){
                     cout << "You are in luck! You got back half of the stolen land from this bad neighbor." << endl;
