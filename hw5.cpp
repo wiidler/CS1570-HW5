@@ -15,7 +15,7 @@ using namespace std;
 int main(){
     const int SIZE = 6;
     int i = 0;
-    srand(37);
+    srand(327);
     newHomeowner player;
     cout << "Congratulations on finding your home sweet home!" << endl << endl;
     cout << "May I get your name please? ";
