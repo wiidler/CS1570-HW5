@@ -14,7 +14,7 @@ struct neighbor{
     float m_acres;
     int m_garages;
     int m_garagesBuilt;
-    int m_stolenAcres;
+    float m_stolenAcres;
     bool m_good;
     bool m_active;
 };
