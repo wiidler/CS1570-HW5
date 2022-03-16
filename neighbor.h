@@ -19,6 +19,4 @@ struct neighbor{
     bool m_active;
 };
 
-/***********************FUNCTION PROTOTYPES***********************/
-
 #endif

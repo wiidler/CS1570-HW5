@@ -13,9 +13,9 @@
 using namespace std;
 
 int main(){
-    const int SIZE = 6;
+    const int SIZE = 6; // size of array
     int i = 0;
-    srand(327);
+    srand(327); // set seed of 327
     newHomeowner player;
     cout << "Congratulations on finding your home sweet home!" << endl << endl;
     cout << "May I get your name please? ";
@@ -36,16 +36,16 @@ int main(){
         cout << endl << "Please enter a positive number!" << endl;
         cin >> player.m_garages;
     }
-    neighbor neighborhood[SIZE];
-    initializeNeighbor(neighborhood, SIZE);
+    neighbor neighborhood[SIZE]; // initialize array
+    initializeNeighbor(neighborhood, SIZE); // fill in array
     int goodNeighbors = 0;
     int badNeighbors = 0;
-    int activeBadNeighbors = 0;
+    int activeBadNeighbors = 0; // default values to set up home defender
     int changeAcres = 0;
     int changeGarages = 0;
     int initialAcres = player.m_acres;
     int initialGarages = player.m_garages;
-    for(i = 0; i<SIZE; i++){
+    for(i = 0; i<SIZE; i++){ // determines the amount of good, bad, and bad active neighbors
         if (neighborhood[i].m_good){
             goodNeighbors++;
         }
@@ -58,7 +58,7 @@ int main(){
     }
     cout << endl << "Sweet cookies! The neighborhood is lucky to have you, " << player.m_homeownerName << "! Looks like you have " << goodNeighbors << " good neighbors and " << badNeighbors << " bad neighbors, and they can't wait to show you around." << endl << endl;
     int rounds = 1;
-    while((rounds <= 10) && (player.m_acres > 0) && (activeBadNeighbors != 0)){
+    while((rounds <= 10) && (player.m_acres > 0) && (activeBadNeighbors != 0)){ // game that continues until 10 rounds pass, player's acres are 0 or less, or there are no more active bad neighbors
         cout << "ROUND " << rounds << endl;
         changeGarages = 0;
         changeAcres = 0;
@@ -80,7 +80,7 @@ int main(){
         }
         changeGarages = player.m_garages - tempValueGarages;
         changeAcres = player.m_acres - tempValueAcres;
-        cout << "END-OF-ROUND SUMMARY:" << endl;
+        cout << "END-OF-ROUND SUMMARY:" << endl; // round summary
         if (changeAcres >= 0){
             cout << "     Current acres of land: " << player.m_acres << "   Change: +" << changeAcres << endl;
         }
@@ -97,7 +97,7 @@ int main(){
         cout << endl;
     }
     cout << endl;
-    cout << "HOME DEFENDER " << player.m_homeownerName << "! Let's run through your battle summary!" << endl;
+    cout << "HOME DEFENDER " << player.m_homeownerName << "! Let's run through your battle summary!" << endl; // End of game summary
     cout << "Home Defender:    " << player.m_homeownerName << endl;
     cout << "Home Address:     " << player.m_address << endl;
     cout << "Initial Acres of Land Owned:    " << initialAcres << endl;
@@ -105,7 +105,7 @@ int main(){
     cout << "Initial Number of Garages Owned:    " << initialGarages << endl;
     cout << "Final Number of Garages Owned:      " << player.m_garages << endl;
     cout << endl;
-    for(i=0; i<SIZE; i++){
+    for(i=0; i<SIZE; i++){ // Summary for all neighbors in the neighborhood
         cout << "Neighbor ID #: " << neighborhood[i].m_neighborId << endl;
         cout << "Acres of Land Owned:    " << neighborhood[i].m_acres << endl;
         cout << "Acres of Land Stolen:    " << neighborhood[i].m_stolenAcres << endl;
