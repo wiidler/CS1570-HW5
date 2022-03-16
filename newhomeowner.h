@@ -16,6 +16,4 @@ struct newHomeowner {
     int m_garages;
 };
 
-/***********************FUNCTION PROTOTYPES***********************/
-
 #endif
