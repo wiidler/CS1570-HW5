@@ -55,7 +55,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
     if(theNewHomeowner.m_garages < aBadNeighbor.m_garages){
         int chance = ((rand()%(100))+1);
         if(chance <= 53){
-            int acresStolen = (aBadNeighbor.m_garages - theNewHomeowner.m_garages);
+            float acresStolen = (aBadNeighbor.m_garages - theNewHomeowner.m_garages);
             cout << "The bad neighbor's garages look better than yours! So hand over " << acresStolen << " acres of land to your neighbor." << endl;
             theNewHomeowner.m_acres -= acresStolen;
             aBadNeighbor.m_acres += acresStolen;

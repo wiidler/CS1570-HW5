@@ -41,9 +41,9 @@ int main(){
     int goodNeighbors = 0;
     int badNeighbors = 0;
     int activeBadNeighbors = 0; // default values to set up home defender
-    int changeAcres = 0;
+    float changeAcres = 0;
     int changeGarages = 0;
-    int initialAcres = player.m_acres;
+    float initialAcres = player.m_acres;
     int initialGarages = player.m_garages;
     for(i = 0; i<SIZE; i++){ // determines the amount of good, bad, and bad active neighbors
         if (neighborhood[i].m_good){
@@ -63,7 +63,7 @@ int main(){
         changeGarages = 0;
         changeAcres = 0;
         int tempValueGarages = player.m_garages;
-        int tempValueAcres = player.m_acres;
+        float tempValueAcres = player.m_acres;
         for(i=0; i<SIZE; i++){
             if(player.m_acres <= 0){
                 player.m_acres = 0;
