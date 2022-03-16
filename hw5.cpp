@@ -73,7 +73,7 @@ int main(){
                     requestAssistance(player, neighborhood[i]);
                 }
                 else if (neighborhood[i].m_good == false){
-                    defendHomeland(player, neighborhood[i]);
+                    defendHomeland(player, neighborhood[i], activeBadNeighbors);
                 }
                 cout << endl;
             }

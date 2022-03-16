@@ -20,6 +20,6 @@ void requestAssistance(newHomeowner & theNewHomeowner, neighbor & aGoodNeighbor)
 // Definition: If the new homeowner encounters a bad neighbor, the neighbor may try to steal land
 // Pre: The new homeowner defined in the struct newHomeowner and a bad neighbor that was initialized in the initializeNeighbor function
 // Post: Updates both struct info based on randomly generated numbers
-void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor);
+void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor, int activeBadNeighbors);
 
 #endif

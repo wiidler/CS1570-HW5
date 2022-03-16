@@ -50,7 +50,7 @@ void requestAssistance(newHomeowner & theNewHomeowner, neighbor & aGoodNeighbor)
     return;
 }
 
-void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
+void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor, int activeBadNeighbors){
     cout << "Bad neighbor ID #" << aBadNeighbor.m_neighborId << " has " << aBadNeighbor.m_garages << " garages, and you have " << theNewHomeowner.m_garages << " garages." << endl;
     if(theNewHomeowner.m_garages < aBadNeighbor.m_garages){
         int chance = ((rand()%(100))+1);
@@ -111,6 +111,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
                     if (aBadNeighbor.m_stolenAcres == 0){
                         cout << "Amazing work! This bad neighbor is now inactive." << endl;
                         aBadNeighbor.m_active = false;
+                        activeBadNeighbors--;
                     }
                 }
             }
