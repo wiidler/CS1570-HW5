@@ -82,7 +82,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
                 chance = ((rand()%(100))+1);
                 if(chance <= 73){
                     cout << "You are in luck! You got back half of the stolen land from this bad neighbor." << endl;
-                    int returnedAcres = (aBadNeighbor.m_stolenAcres / 2);
+                    float returnedAcres = (aBadNeighbor.m_stolenAcres / 2);
                     theNewHomeowner.m_acres += returnedAcres;
                     aBadNeighbor.m_stolenAcres -= returnedAcres;
                     if (returnedAcres == 1){
@@ -98,7 +98,7 @@ void defendHomeland(newHomeowner & theNewHomeowner, neighbor & aBadNeighbor){
                 }
                 else {
                     cout << "You are super lucky! You got back ALL of the stolen land from this bad neighbor." << endl;
-                    int returnedAcres = aBadNeighbor.m_stolenAcres;
+                    float returnedAcres = aBadNeighbor.m_stolenAcres;
                     theNewHomeowner.m_acres += returnedAcres;
                     aBadNeighbor.m_stolenAcres = 0;
                     aBadNeighbor.m_active = 0;
